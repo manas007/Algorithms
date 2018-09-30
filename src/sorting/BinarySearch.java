@@ -8,11 +8,16 @@ public class BinarySearch {
     public static Random random  = new Random();
     public static int arraySize = 28;  // number of elements you want
     public static int[] arrayToSearch = new int[arraySize];
-    public static int rangeMin = 20;  // range of numbers that you want your array to have
-    public static int rangeMax = 2000; //
-    public static int numberToSearch=generateARandomNumberBetweenSpecificRange();
+    public static int rangeMin = 20;
+    public static int rangeMax = 2000;
+    public static int numberToSearch=generateARandomNumberBetweenSpecificRange(rangeMin, rangeMax);
 
     public static void main(String[] args){
+
+        System.out.println("-----------------------------------------------------------");
+        System.out.println("Populating random data to array");
+        System.out.println("-----------------------------------------------------------");
+
         populateDataInArrayAndSortItForBinarySearch();
         System.out.println("The values in array are : ");
         for(int i: arrayToSearch){
@@ -27,13 +32,13 @@ public class BinarySearch {
 
     public static void populateDataInArrayAndSortItForBinarySearch(){
         for(int i=0; i<arrayToSearch.length; i++){
-            arrayToSearch[i] = generateARandomNumberBetweenSpecificRange();
+            arrayToSearch[i] = generateARandomNumberBetweenSpecificRange(rangeMin, rangeMax);
         }
         Arrays.sort(arrayToSearch); // mandatory to have a sorted array for binary search
 
     }
 
-    public static int generateARandomNumberBetweenSpecificRange(){
+    public static int generateARandomNumberBetweenSpecificRange(int rangeMin, int rangeMax){
         // random.nextInt(bound) will give a random number between 0 (inclusive) and the bound (exclusive)
         // random.nextInt(30) will give any number between [0 .......... 29]
         // so, random.nextInt(30) + 1 will give any number between [1 ...........30]
