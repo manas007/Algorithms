@@ -22,7 +22,7 @@ public class QuickUnion {
     }
 
     public boolean connected(int p, int q) {
-        return findRoot(p) == findRoot(q);
+        return findRoot(p)==findRoot(q);
     }
 
     public void union(int p, int q) {
@@ -30,6 +30,7 @@ public class QuickUnion {
         int qroot = findRoot(q);
         idArr[proot] = qroot;
     }
+
 
     public static void main(String[] args) {
         System.out.println("Give your size of array");
