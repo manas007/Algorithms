@@ -14,7 +14,9 @@ public class StackImplementationUsingArray {
     }
 
     public String pop(){
-        return arr[--N];
+        String item =  arr[--N];
+        arr[N] = null;
+        return item;
     }
 
     public boolean isEmpty(){
