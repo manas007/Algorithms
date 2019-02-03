@@ -53,6 +53,31 @@ public class BinaryTree {
     }
 
 
+    // non recursive in order traversal
+    public void nonrecursivePreorder(TreeNode root){
+        TreeNode copyofRoot = root;
+        Stack<TreeNode> preorderstack = new Stack<>();
+        preorderstack.push(root);
+
+        while (!preorderstack.isEmpty()){
+            TreeNode lastPopper = preorderstack.peek();
+            System.out.println(lastPopper.data);
+            preorderstack.pop();
+
+            if(lastPopper.right !=null){
+                preorderstack.push(lastPopper.right);
+            }
+
+            if(lastPopper.left != null){
+                preorderstack.push(lastPopper.left);
+            }
+        }
+
+
+
+    }
+
+
 
 
     public static void main(String[] args)
@@ -66,6 +91,8 @@ public class BinaryTree {
         bi.inorder(rootNode);
         System.out.println("*********************************** Non Recursive Inorder Traversal ***********************************************");
         bi.nonrecursiveInorder(rootNode);
+        System.out.println("*********************************** Non Recursive Preorder Traversal ***********************************************");
+        bi.nonrecursivePreorder(rootNode);
     }
 
     public static TreeNode createBinaryTree()
