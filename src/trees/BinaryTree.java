@@ -1,7 +1,8 @@
 package trees;
 
-public class BinaryTree {
+import java.util.Stack;
 
+public class BinaryTree {
 
     public static class TreeNode
     {
@@ -14,6 +15,17 @@ public class BinaryTree {
         }
     }
 
+    //recursive solution
+    public void inorder(TreeNode root){
+        TreeNode copy = root;
+        if(copy != null){
+            inorder(copy.left);
+            System.out.println(copy.data);
+            copy = root;
+            inorder(copy.right);
+        }
+    }
+
     // Recursive Solution
     public void preorder(TreeNode root){
         if(root !=  null){
@@ -23,17 +35,23 @@ public class BinaryTree {
         }
     }
 
-    public void inorder(TreeNode root){
+    // non recursive in order traversal
+    public void nonrecursiveInorder(TreeNode root){
+        TreeNode copyofRoot = root;
+        Stack<TreeNode> inorderstack = new Stack<>();
 
-        TreeNode copy = root;
-        if(copy != null){
-            inorder(copy.left);
-            System.out.println(copy.data);
-            copy = root;
-            inorder(copy.right);
+        while (copyofRoot !=null || inorderstack.size() > 0) {
+            while (copyofRoot != null) {
+                inorderstack.push(copyofRoot);
+                copyofRoot = copyofRoot.left;
+            }
+
+            copyofRoot = inorderstack.pop();
+            System.out.println(copyofRoot.data);
+            copyofRoot = copyofRoot.right;
         }
-
     }
+
 
 
 
@@ -42,9 +60,12 @@ public class BinaryTree {
         BinaryTree bi = new BinaryTree();
         // Creating a binary tree
         TreeNode rootNode = createBinaryTree();
-        //bi.preorder(rootNode);
+        System.out.println("*********************************** Recursive Preorder Traversal ***********************************************");
+        bi.preorder(rootNode);
+        System.out.println("*********************************** Recursive Inorder Traversal ***********************************************");
         bi.inorder(rootNode);
-
+        System.out.println("*********************************** Non Recursive Inorder Traversal ***********************************************");
+        bi.nonrecursiveInorder(rootNode);
     }
 
     public static TreeNode createBinaryTree()
@@ -64,4 +85,5 @@ public class BinaryTree {
         node60.right = node70;
         return rootNode;
     }
+
 }
