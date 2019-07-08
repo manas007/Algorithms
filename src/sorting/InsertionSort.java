@@ -24,17 +24,13 @@ public class InsertionSort implements Comparable<InsertionSort> {
 
     public void insertionSort(int[] arrayToSort){
         for(int i = 1; i<arrayToSort.length; i++){
-            int min = i;
-            for(int j = i-1; j>=0; j--){
-                if(arrayToSort[j] > arrayToSort[min]){
-                    int temp = arrayToSort[j];
-                    arrayToSort[j] = arrayToSort[min];
-                    arrayToSort[min] = temp;
-                    min = j;
+            for(int j = i; j>0 && arrayToSort[j] < arrayToSort[j-1]; j--){
+                    int temp = arrayToSort[j-1];
+                    arrayToSort[j-1] = arrayToSort[j];
+                    arrayToSort[j] = temp;
                 }
             }
         }
-    }
 
     public static int generateRandomNumber(){
         return random.nextInt(2000) + 1;
